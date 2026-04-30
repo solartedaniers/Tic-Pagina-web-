@@ -26,13 +26,9 @@ function PowerBIView({
   loadingLabel: string;
 }) {
   return (
-    <article className="overflow-hidden rounded-lg border border-(--app-border) bg-(--app-surface) shadow-2xl shadow-black/30 w-full">
+    <article className="w-full overflow-hidden rounded-lg border border-(--app-border) bg-(--app-surface) shadow-2xl shadow-black/40">
       <div className="relative aspect-video w-full bg-(--app-primary) overflow-hidden">
-        <div
-          className="absolute inset-0 scale-105 bg-cover bg-center opacity-20 blur-sm"
-          style={{ backgroundImage: `url(${section.image})` }}
-        />
-        <div className="absolute inset-0 grid place-items-center bg-[linear-gradient(135deg,var(--app-primary),transparent)]">
+        <div className="absolute inset-0 grid place-items-center bg-[linear-gradient(135deg,var(--app-primary),var(--app-surface))]">
           <span className="rounded-md border border-(--app-border) bg-(--app-surface)/85 px-4 py-2 text-sm font-medium text-(--app-muted) backdrop-blur">
             {loadingLabel}
           </span>
@@ -57,31 +53,31 @@ function DashboardScreen({
   index: number;
 }) {
   return (
-    <section className="grid min-h-[calc(100vh-140px)] gap-8 py-8 lg:grid-cols-[420px_1fr] items-center">
+    <section className="grid min-h-[calc(100vh-140px)] gap-10 py-8 lg:grid-cols-[380px_1fr] items-center">
       {/* Columna Izquierda: Información */}
-      <div className="flex flex-col rounded-lg border border-(--app-border) bg-(--app-surface) p-6 md:p-8 shadow-xl">
+      <div className="flex flex-col rounded-lg border border-(--app-border) bg-(--app-surface) p-6 md:p-7 shadow-xl">
         <p className="text-xs font-semibold uppercase tracking-[0.24em] text-(--app-accent)">
           {section.kicker}
         </p>
-        <h2 className="mt-4 text-3xl font-bold leading-tight text-(--app-text) md:text-4xl">
+        <h2 className="mt-3 text-2xl font-bold leading-tight text-(--app-text) md:text-3xl">
           {section.title}
         </h2>
-        <p className="mt-2 text-base font-semibold text-(--app-warning)">
+        <p className="mt-2 text-sm font-semibold text-(--app-warning)">
           {section.subtitle}
         </p>
-        <p className="mt-5 text-sm leading-relaxed text-(--app-muted)">
+        <p className="mt-4 text-xs leading-relaxed text-(--app-muted)">
           {section.description}
         </p>
 
-        <div className="mt-7 space-y-6">
-          <div className="rounded-lg border border-(--app-border) bg-(--app-surface-soft) p-5">
-            <h3 className="text-sm font-semibold text-(--app-text)">
+        <div className="mt-6 space-y-5">
+          <div className="rounded-lg border border-(--app-border) bg-(--app-surface-soft) p-4">
+            <h3 className="text-xs font-bold text-(--app-text) uppercase tracking-wide">
               {section.pointsTitle}
             </h3>
-            <ul className="mt-4 space-y-3 text-sm leading-6 text-(--app-muted)">
+            <ul className="mt-3 space-y-2 text-xs leading-5 text-(--app-muted)">
               {section.points.map((point) => (
                 <li className="flex gap-3" key={point}>
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-(--app-accent)" />
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-(--app-accent)" />
                   <span>{point}</span>
                 </li>
               ))}
@@ -89,13 +85,13 @@ function DashboardScreen({
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-(--app-text) mb-3">
+            <h3 className="text-xs font-bold text-(--app-text) mb-2 uppercase tracking-wide">
               {section.dataTitle}
             </h3>
             <div className="flex flex-wrap gap-2">
               {section.data.map((item) => (
                 <span
-                  className="rounded-md border border-(--app-border) bg-(--app-bg) px-3 py-1.5 text-[11px] font-bold text-(--app-muted) uppercase tracking-wider"
+                  className="rounded-md border border-(--app-border) bg-(--app-bg) px-2.5 py-1 text-[10px] font-bold text-(--app-muted) uppercase tracking-wider"
                   key={item}
                 >
                   {item}
@@ -106,7 +102,7 @@ function DashboardScreen({
         </div>
 
         <a
-          className="mt-8 inline-flex h-12 items-center justify-center rounded-md bg-(--app-accent) px-6 text-sm font-bold text-(--app-bg) transition-all hover:brightness-110 active:scale-95 shadow-lg shadow-(--app-accent)/10"
+          className="mt-6 inline-flex h-11 items-center justify-center rounded-md bg-(--app-accent) px-6 text-xs font-bold text-(--app-bg) transition-all hover:brightness-110 active:scale-95 shadow-lg shadow-(--app-accent)/10"
           href={section.url}
           target="_blank"
           rel="noreferrer"
@@ -115,19 +111,19 @@ function DashboardScreen({
         </a>
       </div>
 
-      {/* Columna Derecha: Reporte Power BI Centrado */}
-      <div className="flex flex-col w-full">
+      {/* Columna Derecha: Reporte Power BI - CORRECCIÓN: max-w-full */}
+      <div className="flex flex-col w-full max-w-full overflow-hidden">
         <div className="mb-4 flex items-center justify-between px-1">
           <div className="flex items-center gap-3">
-            <span className="text-lg font-bold text-(--app-accent)">
+            <span className="text-xl font-black text-(--app-accent)">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <span className="h-px w-8 bg-(--app-border)" />
+            <span className="h-px w-12 bg-(--app-border)" />
             <span className="text-xs font-bold uppercase tracking-widest text-(--app-muted)">
               {section.label}
             </span>
           </div>
-          <span className="text-[10px] font-bold text-(--app-muted)/50 uppercase">
+          <span className="text-[10px] font-bold text-(--app-muted)/60 uppercase tracking-widest">
             Visualización Interactiva
           </span>
         </div>
@@ -137,11 +133,10 @@ function DashboardScreen({
           loadingLabel={content.powerBi.loadingLabel}
         />
         
-        <div className="mt-4 border-l-4 border-(--app-accent) bg-(--app-surface) p-4 rounded-r-lg">
-          <h3 className="text-xs font-bold uppercase tracking-widest text-(--app-accent)">
+        <div className="mt-5 border-l-4 border-(--app-accent) bg-(--app-surface) p-4 rounded-r-lg shadow-inner">
+          <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-(--app-accent)">
             {section.valueTitle}
           </h3>
-          {/* CORRECCIÓN: Usando llaves {} y comillas normales dentro de un string para evitar el error de ESLint */}
           <p className="mt-1 text-sm text-(--app-muted) italic leading-relaxed">
             {"\""}{section.value}{"\""}
           </p>
@@ -184,7 +179,8 @@ export default function Home() {
       style={themeStyle}
     >
       <header className="sticky top-0 z-50 border-b border-(--app-border) bg-(--app-bg)/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-4 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+        {/* CORRECCIÓN: max-w-400 (equivale a 1600px en Tailwind) */}
+        <div className="mx-auto flex max-w-400 flex-col gap-4 px-6 py-4 lg:flex-row lg:items-center lg:justify-between lg:px-10">
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-(--app-accent)">
               {content.project.eyebrow}
@@ -203,7 +199,6 @@ export default function Home() {
 
               return (
                 <button
-                  /* CORRECCIÓN: min-h-10 en lugar de min-h-[40px] para seguir la sugerencia de Tailwind */
                   className="inline-flex min-h-10 items-center justify-center rounded-md border px-4 text-center text-xs font-bold transition-all active:scale-95"
                   key={section.id}
                   onClick={() => setActiveId(section.id)}
@@ -226,7 +221,8 @@ export default function Home() {
         </div>
       </header>
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      {/* CORRECCIÓN: max-w-400 */}
+      <div className="mx-auto max-w-400 px-6 lg:px-10">
         <DashboardScreen section={activeSection} index={activeIndex} />
       </div>
     </main>
