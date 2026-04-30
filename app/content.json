@@ -92,7 +92,7 @@
       "dataTitle": "Datos que se muestran",
       "data": ["Inscritos SENA", "Ano 2019", "Ano 2020", "Ocupaciones", "Nivel de calificacion"],
       "valueTitle": "Valor de la pantalla",
-      "value": "Convierte una fuente de capacitacion en una senal util para orientar programas de formacion y empleabilidad."
+      "value": "Convierte una fuente de capacitacion en una señal util para orientar programas de formacion y empleabilidad."
     },
     {
       "id": "prediccion",
